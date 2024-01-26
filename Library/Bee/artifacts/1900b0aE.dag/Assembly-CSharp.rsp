@@ -389,6 +389,7 @@
 "Assets/Scripts/Goal.cs"
 "Assets/Scripts/GoatMovement.cs"
 "Assets/Scripts/ManagerScenes.cs"
+"Assets/Scripts/Obstacle.cs"
 "Assets/Scripts/PlayerMovement.cs"
 -langversion:9.0
 
