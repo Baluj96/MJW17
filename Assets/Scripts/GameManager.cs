@@ -14,10 +14,10 @@ public class GameManager : MonoBehaviour
     GameObject spawnGoat;
     public int level;
     [SerializeField] TextMeshProUGUI goatstextUI;
-    [SerializeField] GameObject goatPrefab;
+    [SerializeField] GameObject[] goatPrefabs;
     int numberGenerateGoats;
     public int numGenerateGoats;
-    float time = 0.5f;
+    float waitTime = 0.5f;
 
     [Header("UI GameOver")]
     [SerializeField] GameObject panelGameOver;
@@ -62,6 +62,10 @@ public class GameManager : MonoBehaviour
 
     public void NextLevel()
     {
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        player.transform.position = new Vector3(0, 0.5f, 0);
+        player.GetComponent<PlayerMovement>().enabled = true;
+
         goatstextUI.enabled = true;
         level++;
         numberGenerateGoats = 10 + 2 * level + Mathf.RoundToInt(level * level * 0.5f);
@@ -87,16 +91,17 @@ public class GameManager : MonoBehaviour
         }
 
         //Debug.Log("Generando cabras");
+        StartCoroutine(CreateGoats());
+    }
+    IEnumerator CreateGoats()
+    {
         while (numberGenerateGoats > 0)
         {
-            Invoke("InstantiateGoat", time);
+            int n = Random.Range(0, goatPrefabs.Length);
+            Instantiate(goatPrefabs[n], spawnGoat.transform.position, spawnGoat.transform.rotation, gameObject.transform);
             numberGenerateGoats--;
+            yield return new WaitForSeconds(waitTime);
         }
-    }
-
-    void InstantiateGoat()
-    {
-        Instantiate(goatPrefab, spawnGoat.transform.position, spawnGoat.transform.rotation, gameObject.transform);
     }
 
     public void Victory()

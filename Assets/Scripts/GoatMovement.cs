@@ -10,10 +10,9 @@ public class GoatMovement : MonoBehaviour
     void Update()
     {
         GetComponent<NavMeshAgent>().SetDestination(GameObject.FindGameObjectWithTag("Player").transform.position);
-        Death();
     }
 
-    void Death()
+    public void Damage()
     {
         health--;
         if (health <= 0)
