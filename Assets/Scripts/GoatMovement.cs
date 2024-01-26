@@ -9,6 +9,10 @@ public class GoatMovement : MonoBehaviour
 
     void Update()
     {
+    }
+
+    private void FixedUpdate()
+    {
         GetComponent<NavMeshAgent>().SetDestination(GameObject.FindGameObjectWithTag("Player").transform.position);
     }
 
