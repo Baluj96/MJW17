@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour
 
     public void CheckUI()
     {
-        goatstextUI.text = "Goats: " + numberGenerateGoats;
+        goatstextUI.text = "Cabras: " + numberGenerateGoats;
     }
 
     void CreateGoat()
@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
 
     public void ToGameOver()
     {
-        //Debug.Log("¿han muerto todas las cabras?");
+        //Debug.Log("ï¿½han muerto todas las cabras?");
         if (numGenerateGoats <= 0)
         {
             Invoke("GameOver", 1);
