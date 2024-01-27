@@ -19,7 +19,6 @@ public class Obstacle : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    // Update is called once per frame
     void Update()
     {
         dis = Vector3.Distance(player.transform.position, transform.position);
